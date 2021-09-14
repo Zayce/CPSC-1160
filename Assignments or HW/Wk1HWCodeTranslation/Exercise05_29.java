@@ -13,6 +13,8 @@ public class Exercise05_29 {
     int startDay = firstDay;
     int numberOfDaysInMonth = 0;
 
+    input.close();
+
     // Display calendar for each month
     for (int month = 1; month <= 12; month++) {
       // Display Calendar title
@@ -23,7 +25,7 @@ public class Exercise05_29 {
         numberOfDaysInMonth = 31;
         break;
       case 2:
-        System.out.println("Feburary " + year);
+        System.out.println("February " + year);
         if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
           numberOfDaysInMonth = 29;
         else
