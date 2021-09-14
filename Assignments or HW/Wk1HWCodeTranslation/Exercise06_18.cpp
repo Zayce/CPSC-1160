@@ -1,47 +1,50 @@
 #include <iostream>
-#include <cmath>
+#include <string>
 using namespace std;
 
-//TODO: Add function prototype here
+bool isValidPassword(string);
 
 int main(){
-    //TODO: Finish converting everything to cpp
-    // Prompt the user to enter a password
-    java.util.Scanner input = new java.util.Scanner(System.in);
-    System.out.print("Enter a string for password: ");
-    String s = input.nextLine();
+	// Prompt the user to enter a password
+	cout << "Enter a string for password: ";
 
-    if (isValidPassword(s)) {
-      System.out.println("Valid password");
-    }
-    else {
-      System.out.println("Invalid password");
-    }
-  }
+	string s; 
+	cin >> s;
 
-  /** Check if a string is a valid password */
-  public static boolean isValidPassword(String s) {
-    // Only letters and digits?
-    for (int i = 0; i < s.length(); i++) {
-      if (!Character.isLetter(s.charAt(i)) && 
-          !Character.isDigit(s.charAt(i)))
-        return false;
-    }
-    
-    // Check length
-    if (s.length() < 8)
-      return false;
-    
-    // Count the number of digits
-    int count = 0;
-    for (int i = 0; i < s.length(); i++) {
-      if (Character.isDigit(s.charAt(i)))
-        count++;
-    }
-    
-    if (count >= 2)
-      return true;
-    else 
-      return false;
-  }
+	if (isValidPassword(s)) {
+		cout << "Valid password" << endl;
+	}
+	else {
+		cout << "Invalid password" << endl;
+	}
+}
+
+/** Check if a string is a valid password */
+bool isValidPassword(string s) {
+	// Only letters and digits?
+	for (int i = 0; i < (int) (s.length()); i++) {
+		if (!isalpha(s.at(i)) && !isdigit(s.at(i))){
+			return false;
+		}
+	}
+
+	// Check length
+	if (s.length() < 8){
+		return false;
+	}
+
+	// Count the number of digits
+	int count = 0;
+	for (int i = 0; i < (int) (s.length()); i++) {
+		if (isalpha(s.at(i)))
+			count++;
+	}
+
+	if (count >= 2){
+			return true;
+		}
+		else{
+			return false;
+		}
+
 }
