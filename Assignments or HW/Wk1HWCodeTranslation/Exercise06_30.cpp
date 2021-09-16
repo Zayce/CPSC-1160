@@ -2,8 +2,6 @@
 #include <ctime>
 #include <cstdlib>
 
-
-//TODO: WHY THE FUCK DOES C++ BEHAVE DIFFERENTLY IN DIFFERENT COMPILERS
 using namespace std;
 
 int getDice();
