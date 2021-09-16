@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "command": "npm start",
+            "name": "Run npm start",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        
+
+        {
             "name": "C:\\TDM-GCC-64\\bin\\g++.exe - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
