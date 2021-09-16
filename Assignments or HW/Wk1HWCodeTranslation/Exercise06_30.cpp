@@ -9,9 +9,9 @@ using namespace std;
 int getDice();
 
 int main(){
+    srand(time(0));
     int dice = getDice();
 
-    //You win early if dice value is 7 or 11
     if (dice == 7 || dice == 11) {
       cout << " You win" << endl;
       exit(1);
@@ -25,7 +25,7 @@ int main(){
 
     do{
       dice = getDice();
-    } while ((dice != 7 ) && (dice == point));
+    } while ((dice != 7 ) && (dice != point));
     
     if (dice == 7){
       cout << " You lose" << endl;
@@ -36,7 +36,6 @@ int main(){
    }
 
 int getDice() {
-  srand(time(0));
   int i1 = (1 + (rand() % 6));
   int i2 = (1 + (rand() % 6));
 
