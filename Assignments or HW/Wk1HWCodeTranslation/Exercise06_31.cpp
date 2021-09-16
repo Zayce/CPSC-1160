@@ -4,16 +4,18 @@
 
 using namespace std;
 
+
+//TODO: Verify this with tests
 bool isValid(long);
 int sumOfDoubleEvenPlace(long);
 int getDigit(int);
 int sumOfOddPlace(long);
-bool prefixMatched(long);
+bool prefixMatched(long, int);
 int getSize(long);
-long getPrefix(long);
+long getPrefix(long, int);
 
 int main(){
-    cout << "Enter a credit card number as a long integer";
+    cout << "Enter a credit card number as a long integer: ";
     long number;
 
     cin >> number;
@@ -27,11 +29,12 @@ int main(){
 }
 
 bool isValid(long number){
-    return ((getSize(number) >= 13) && (getSize(number) <= 16) && 
-        (prefixMatched(number, 4) || prefixMatched(number, 5) ||
-        prefixMatched(number, 6) || prefixMatched(number, 37)) && 
-       (sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0);
+    return (((getSize(number) >= 13) && (getSize(number) <= 16) && (prefixMatched(number, 4))) 
+        || prefixMatched(number, 5)
+        || prefixMatched(number, 6) 
+        || ((prefixMatched(number, 37)) && (sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0));
 }
+
 
 int sumOfDoubleEvenPlace(long number) {
     int result = 0;
