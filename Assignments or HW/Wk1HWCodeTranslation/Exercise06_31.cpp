@@ -26,7 +26,12 @@ int main(){
     }
 }
 
-
+bool isValid(long number){
+    return ((getSize(number) >= 13) && (getSize(number) <= 16) && 
+        (prefixMatched(number, 4) || prefixMatched(number, 5) ||
+        prefixMatched(number, 6) || prefixMatched(number, 37)) && 
+       (sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0);
+}
 
 int sumOfDoubleEvenPlace(long number) {
     int result = 0;
