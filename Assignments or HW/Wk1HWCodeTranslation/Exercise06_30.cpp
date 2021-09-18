@@ -31,7 +31,7 @@ int main(){
     else{
       cout << " You win" << endl;
     }
-   }
+}
 
 int getDice() {
   int i1 = (1 + (rand() % 6));

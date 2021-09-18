@@ -10,7 +10,8 @@
 			"ostream": "cpp",
 			"__locale": "cpp",
 			"ios": "cpp",
-			"string": "cpp"
+			"string": "cpp",
+			"new": "cpp"
 		},
 		"code-runner.runInTerminal": true
 	}
