@@ -11,3 +11,37 @@ Assignments or HW/Wk1HWCodeTranslation/Exercise07_11
 *.dSYM
 Assignments or HW/Wk1HWCodeTranslation/Exercise07_19
 *.exec
+Assignments or HW/Wk1HWCodeTranslation/Exercise07_23
+
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+### Above combination will ignore all files without extension ###
+
+# Ignore files with extension `.class` & `.sm`
+*.class
+*.sm
+
+# Ignore `bin` dir
+bin/
+# or
+*/bin/*
+
+# Unignore all `.jar` in `bin` dir
+!*/bin/*.jar
+
+# Ignore all `library.jar` in `bin` dir
+*/bin/library.jar
+
+# Ignore a file with extension
+relative/path/to/dir/filename.extension
+
+# Ignore a file without extension
+relative/path/to/dir/anotherfile
