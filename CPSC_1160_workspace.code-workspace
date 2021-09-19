@@ -23,7 +23,8 @@
 			"unordered_map": "cpp",
 			"utility": "cpp",
 			"vector": "cpp",
-			"stdexcept": "cpp"
+			"stdexcept": "cpp",
+			"__string": "cpp"
 		},
 		"code-runner.runInTerminal": true
 	}
