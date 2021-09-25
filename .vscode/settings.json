@@ -2,6 +2,11 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "code-runner.runInTerminal": true,
     "files.associations": {
-        "week3lab": "cpp"
+        "week3lab": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "__tuple": "cpp",
+        "array": "cpp",
+        "new": "cpp"
     }
 }
