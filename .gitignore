@@ -48,3 +48,6 @@ Class Code/Week 2/Week2PointerCode.dSYM/Contents/Info.plist
 .DS_Store
 .gitignore
 Lab/Lab 2/.DS_Store
+
+# Ignore zip files
+.zip
