@@ -45,3 +45,6 @@ relative/path/to/dir/anotherfile
 Class Code/Week 2/.DS_Store
 Class Code/Week 2/Week2PointerCode.dSYM/Contents/Info.plist
 .vscode/tasks.json
+.DS_Store
+.gitignore
+Lab/Lab 2/.DS_Store
