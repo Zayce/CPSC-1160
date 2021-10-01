@@ -24,7 +24,10 @@
 			"utility": "cpp",
 			"vector": "cpp",
 			"stdexcept": "cpp",
-			"__string": "cpp"
+			"__string": "cpp",
+			"iosfwd": "cpp",
+			"istream": "cpp",
+			"sstream": "cpp"
 		},
 		"code-runner.runInTerminal": true
 	}
