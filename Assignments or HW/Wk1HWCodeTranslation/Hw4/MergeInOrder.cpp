@@ -9,7 +9,7 @@ using namespace std;
 int* mergeInOrder(int* left, int leftSize, int* right, int rightSize);
 
 int main(){
-
+    return 0;
 }
 
 int* mergeInOrder(int* left, int leftSize, int* right, int rightSize){
