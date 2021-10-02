@@ -22,8 +22,7 @@ int main(){
     cout << "Please enter a value: ";
     cin >> desiredIndex;
 
-    int value = getNthItem(pArr, s, startIndex, desiredIndex);
-    cout << value << endl;
+    cout << getNthItem(pArr, s, startIndex, desiredIndex) << endl;
     return 0;
 }
 
