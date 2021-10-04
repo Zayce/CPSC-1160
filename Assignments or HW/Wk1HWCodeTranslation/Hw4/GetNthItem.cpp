@@ -7,22 +7,21 @@
 using namespace std;
 
 int getNthItem(int* arr, int size, int &start, int n);
-int len(int[]);
+void displayArray(int* arr, int length);
 
-//TODO:: Fix this horrible mess
+
 int main(){
-    int arr[] = {4, 5, 3, 2, 1, 6, 7, 0};
-    int* pArr = arr;
-    int s = len(arr);
+    int* arr = new arr[7]{4, 5, 3, 2, 1, 6, 7};
+    int s = sizeof(arr) / sizeof(int);
     int startIndex = 0;
     startIndex = 0;
 
     int desiredIndex;
-    cout << s << endl;
+    cout << "Length is " << s << endl;
     cout << "Please enter a value: ";
     cin >> desiredIndex;
 
-    cout << getNthItem(pArr, s, startIndex, desiredIndex) << endl;
+    cout << getNthItem(arr, s, startIndex, desiredIndex) << endl;
     return 0;
 }
 
@@ -49,4 +48,13 @@ int getNthItem(int* arr, int size, int &start, int n){
         start++;
         return getNthItem(arr, size, start, n);
     }
+}
+
+void displayArray(int* arr, int length){
+    cout << "{";
+    for(int i = 0; i < length - 1; i++){
+        cout << arr[i] << ", ";
+    }
+    cout << arr[length - 1];
+    cout << "}" << endl;
 }
