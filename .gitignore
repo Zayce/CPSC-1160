@@ -1,5 +1,6 @@
+
 .vscode/tasks.json
-.vscode/tasks.json
+.vscode/launch.json
 Assignments or HW/Wk1HWCodeTranslation/Exercise06_30
 *.exe
 Assignments or HW/Wk1HWCodeTranslation/Exercise07_11.class
@@ -51,3 +52,6 @@ Lab/Lab 2/.DS_Store
 
 # Ignore zip files
 .zip
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/launch.json
