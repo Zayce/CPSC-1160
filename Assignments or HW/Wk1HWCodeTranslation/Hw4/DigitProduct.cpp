@@ -11,7 +11,7 @@ int digitProduct(int value);
 int main(){
     int value;
 
-    cout << "Please enter an integer: ";
+    cout << "Please enter an integer:"
     cin >> value;
 
     cout << digitProduct(value) << endl;
