@@ -14,9 +14,7 @@ void deleteArray(int*);
 int main(){
     int size, start, end, newSize;
 
-    cout << "How many values would you like your array? ";
-    cin >> size;
-    const int SIZE = size;
+
 
     int* arr = new int[SIZE];
 
