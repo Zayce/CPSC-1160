@@ -27,7 +27,8 @@
 			"__string": "cpp",
 			"iosfwd": "cpp",
 			"istream": "cpp",
-			"sstream": "cpp"
+			"sstream": "cpp",
+			"quicksortcpp": "cpp"
 		},
 		"code-runner.runInTerminal": true
 	}
