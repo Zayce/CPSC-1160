@@ -10,11 +10,16 @@ int* slice(int*, int, int, int, int&);
 void displayArray(int*, int);
 void deleteArray(int*);
 
-
+/** 
+ * Main method
+ */
 int main(){
     int size, start, end, newSize;
 
-
+    //Asking for size
+    cout << "How many values would you like your array? ";
+    cin >> size;
+    const int SIZE = size;
 
     int* arr = new int[SIZE];
 
@@ -24,30 +29,11 @@ int main(){
         cin >> tempVal;
         arr[i] = tempVal;
     }
-    
-    //Assuming start index and end index are invalid at the beginning as the worst case scenario.
-    bool invalidStartIndex = true, invalidEndIndex = true;
 
-    //Validating new starting index to be more than or equal to 0 and less than size - 1
-    do{
-        cout << "Please enter starting index of new array: ";
-        cin >> start;
-        invalidStartIndex = ((start < 0) || (start >= size));
-        if(invalidStartIndex){
-            cout << "Invalid start index. Please enter an index from index 0 to index " << size - 1 << "." << endl;
-        }
-    }while(invalidStartIndex);
-
-    //Validating new end index to be more than or equal to new starting index and less than size - 1
-    do{
-        cout << "Please enter ending index of new array: ";
-        cin >> end;
-        invalidEndIndex = ((start > end) || (end >= size));
-        if(invalidEndIndex){
-            cout << "Invalid ending index. Please enter an index from index " << start <<
-                    " to index " << size - 1 << "." << endl;
-        }
-    }while(invalidEndIndex);
+    cout << "Please enter starting index of new array: ";
+    cin >> start;
+    cout << "Please enter ending index of new array: ";
+    cin >> end;
 
     newSize = end - start + 1;
 
@@ -59,9 +45,26 @@ int main(){
     return 0;
 }
 
+/**
+ * Sices an array to a new array
+ * 
+ * @param   arr: array
+ *          size: length or size of the array
+ *          start: new start index
+ *          end: new end index
+ *          newSize: new length or size of the new array
+ * @return newArray with size newSize.
+ */
 int* slice(int* arr, int size, int start, int end, int &newSize){
-    int* newArr = new int[newSize];
+    bool invalidStartIndex = ((start < 0) || (start >= size));
+    bool invalidEndIndex = ((start > end) || (end >= size));
 
+    if(invalidStartIndex || invalidEndIndex){
+        cout << "Illegal argument." << endl;
+        exit(0);
+    }
+
+    int* newArr = new int[newSize];
     for(int i = start, j = 0; i <= end; i++, j++){
         newArr[j] = arr[i];
     }
@@ -69,6 +72,12 @@ int* slice(int* arr, int size, int start, int end, int &newSize){
     return newArr;
 }
 
+/**
+ * Displays arrays in a nice format.
+ * 
+ * @param   arr: array to be displayed
+ *          length: length of array.
+ */
 void displayArray(int* arr, int length){
     cout << "{";
     for(int i = 0; i < length - 1; i++){
@@ -78,6 +87,11 @@ void displayArray(int* arr, int length){
     cout << "}" << endl;
 }
 
+/**
+ * Deletes dynamically created array and point it to nullptr.
+ * 
+ * @param   arr: array to be deleted
+ */
 void deleteArray(int* arr){
     delete[] arr;
     arr = nullptr;
