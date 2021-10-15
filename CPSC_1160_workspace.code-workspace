@@ -28,7 +28,8 @@
 			"iosfwd": "cpp",
 			"istream": "cpp",
 			"sstream": "cpp",
-			"quicksortcpp": "cpp"
+			"quicksortcpp": "cpp",
+			"cstdlib": "cpp"
 		},
 		"code-runner.runInTerminal": true
 	}
