@@ -11,7 +11,8 @@ int main(){
     int len = 7;
     displayArray(arr, len);
     placePivot(arr, len);
-    displayArray(arr, len);
+        displayArray(arr, len);
+
 }
 
 void placePivot(int* arr, int len){
@@ -20,21 +21,27 @@ void placePivot(int* arr, int len){
     pivot = 0;
     low = 1;
     high = len - 1;
-    while(high > low){
-        while(arr[low] < arr[pivot]){
+    while(high >= low){
+        if(arr[low] <= arr[pivot]){
             low++;
         }
         
-        while(arr[pivot] < arr[high]){
-            high++;
+        else if(arr[pivot] < arr[high]){
+            high--;
         }
 
-        if(arr[low] > pivot && arr[high] < pivot){
+        else if(low <= high){
             swap(arr, low, high);
         }
-        cout << 3; //It stops hee
     }
-    swap(arr, pivot, high);
+    if(arr[low] > arr[pivot]){
+        swap(arr, pivot, high);
+    }
+    else{
+        swap(arr, pivot, low);
+    }
+
+
 }
 
 void swap(int* arr, int a, int b){
