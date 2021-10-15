@@ -10,7 +10,7 @@
 
 using namespace std;
 
-int* recMergeSort(int* arr, int start, int end);
+int* mergeSort(int* arr, int start, int end);
 int* generateRandomArray(int numItems, int min, int max);
 int* mergeInOrder(int* left, int lSize, int* right, int rSize);
 void displayArray(int* arr, int length);
@@ -18,8 +18,11 @@ void deleteArray(int* arr);
 
 int main(){
     srand(time(0));
-    int size = 10;
+    int size;
     int start = 0;
+
+    cout << "What size array do you want: ";
+    cin >> size;
     int end = size - 1;
 
     int* arr = generateRandomArray(size, 1, 30); // function returns an array with 5 integers where each integer is between 20 and 30
@@ -27,7 +30,7 @@ int main(){
     cout << "Before sorting: ";
     displayArray(arr, size);
 
-    arr = recMergeSort(arr, start, end);
+    arr = mergeSort(arr, start, end);
 
     cout << "After sorting: ";
     displayArray(arr, size);
@@ -46,7 +49,7 @@ int main(){
  * 
  * @return returns a sorted array 
  */ 
-void recMergeSort(int* &arr, int start, int end){
+int* mergeSort(int* &arr, int &start, int &end){
     int size = end - start + 1;
 
     if(size == 1){
@@ -63,12 +66,12 @@ void recMergeSort(int* &arr, int start, int end){
         int rightSize = end - mid + 1;
         int* right = new int[rightSize];
 
-        left = recMergeSort(arr, start, mid-1);
-        right = recMergeSort(arr, mid, end);
+        left = mergeSort(arr, start, mid-1);
+        right = mergeSort(arr, mid, end);
 
         arr = mergeInOrder(left, leftSize, right, rightSize);
 
-        return merged;
+        return arr;
 
     }
 }
