@@ -35,7 +35,10 @@ int main(){
     cout << "After sorting: ";
     displayArray(arr, size);
 
-    deleteArray(arr);
+    if(arr){
+        delete[] arr;
+        arr = nullptr;
+    }
 
     return 0;
 }
@@ -49,15 +52,19 @@ int main(){
  * 
  * @return returns a sorted array 
  */ 
-int* mergeSort(int* &arr, int &start, int &end){
+int* mergeSort(int* arr, int start, int end){
     int size = end - start + 1;
 
-    if(size == 1){
+    if(size == 0){
+        return nullptr;
+    }
+    else if(size == 1){
         int* baseCase = new int[1];
         baseCase[0] = arr[start];
         return baseCase;
     }
     else{
+        int* merged = new int[size];
         int mid = start + (size/2);
         
         int leftSize = mid - start + 1;
@@ -69,9 +76,14 @@ int* mergeSort(int* &arr, int &start, int &end){
         left = mergeSort(arr, start, mid-1);
         right = mergeSort(arr, mid, end);
 
-        arr = mergeInOrder(left, leftSize, right, rightSize);
+        // if (arr){
+        //     delete[] arr;
+        //     arr = nullptr;
+        // }
 
-        return arr;
+        merged = mergeInOrder(left, leftSize, right, rightSize);
+
+        return merged;
 
     }
 }
@@ -103,8 +115,8 @@ int* generateRandomArray(int numItems, int min, int max){
  *          rSize: right array size
  * @return returns a sorted array, and deleting the left and right array input.
  */
-int* mergeInOrder(int* left, int lSize, int* right, int rSize) {
-	int i, j, k;
+int* mergeInOrder(int* left, int lSize, int* right, int rSize){
+    int i, j, k;
 	int* merged = new int[lSize + rSize];
 	i = j = k = 0;
 
@@ -125,12 +137,14 @@ int* mergeInOrder(int* left, int lSize, int* right, int rSize) {
 		merged[k++] = right[j++];
 	}
 
-    //If below arrays exist, delete them to free up memory.
+    // //If below arrays exist, delete them to free up memory.
 	if(left){
-		deleteArray(left);
+		delete[] left;
+        left = nullptr;
 	}
 	if(right){
-		deleteArray(right);
+        delete[] right;
+        right = nullptr;
     }
 	return merged;
 }
