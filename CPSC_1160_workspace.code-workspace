@@ -29,7 +29,8 @@
 			"istream": "cpp",
 			"sstream": "cpp",
 			"quicksortcpp": "cpp",
-			"cstdlib": "cpp"
+			"cstdlib": "cpp",
+			"algorithm": "cpp"
 		},
 		"code-runner.runInTerminal": true
 	}

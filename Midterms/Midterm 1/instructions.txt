@@ -8,3 +8,7 @@
 //find final running time in terms of O(n)
 //Must show working
 //No need to test in main function for marks.
+
+each question should take 30min
+
+3rd part is a quiz.
