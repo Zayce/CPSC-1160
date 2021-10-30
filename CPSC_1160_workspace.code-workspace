@@ -30,7 +30,12 @@
 			"sstream": "cpp",
 			"quicksortcpp": "cpp",
 			"cstdlib": "cpp",
-			"algorithm": "cpp"
+			"algorithm": "cpp",
+			"ctime": "cpp",
+			"*.cp": "cpp",
+			"chrono": "cpp",
+			"limits": "cpp",
+			"ratio": "cpp"
 		},
 		"code-runner.runInTerminal": true
 	}
