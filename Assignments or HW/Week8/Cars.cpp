@@ -15,7 +15,6 @@ void Menu();
 int main(){
     fleet = new unsigned char;
     Menu();
-
     return 0;
 }
 
@@ -46,7 +45,7 @@ void ReturnCar(unsigned char* fleet, CARS c){
  *          0: Car is availble to rent
  */
 bool RentalStatus(unsigned char* fleet, CARS c){
-    return ~((*fleet) & (unsigned char) (c));
+    return ((*fleet) & (unsigned char) (c));
 }
 
 /**
@@ -56,61 +55,85 @@ void ShowFleet(){
     string rentalStatus;
     string carNum;
 
-    for(int i = 0; i < 7; i++){
+    for(int i = 0; i <= 7; i++){
         if(RentalStatus(fleet, CarsSelector(i))){
-            rentalStatus = "rented.";
+            rentalStatus = "Rented";
         }
         else{
-            rentalStatus = "not rented and available to rent.";
+            rentalStatus = "Available";
         }
-        cout << "Car" << i << " rental status is " << rentalStatus << endl;
+        cout << "Car" << i << " Status: " << rentalStatus << endl;
     }
+    cout << endl;
 }
 
 /**
  *  Recursive menu function that shows the available options.
  */
 void Menu(){
-    bool isInputInRange;
-    int input;
-    cout << "Please enter your choice: \n" << 
+    bool isInputInRange, rentCarInputInvalid, returnCarInputInvalid;
+    int menuInput, optionInput;
+    cout << "==========================\n" <<
+            "Please enter your choice: \n" << 
             "0: Exit \n" <<
             "1: Show Fleet\n" <<
             "2: Rent Car\n" <<
             "3: Return Car\n" << endl;
-    cin >> input;
-    switch(input){
+    cin >> menuInput;
+    switch(menuInput){
         case 0:
             exit(0);
         case 1:
             ShowFleet();
             break;
-        case 2://TODO: Fix this bullshit below
-            int rentCarInput;
+        case 2:
             do{
-                cout << "Please choose from the following available cars: {";
-                for(int i = 0; i < 7; i++){            
-                    if(~RentalStatus(fleet, CarsSelector(i))){
+                cout << "[Enter -1 to Exit] Please choose from the following available cars: {";
+                for(int i = 0; i <= 7; i++){  
+                    if(!(RentalStatus(fleet, CarsSelector(i)))){
                         cout << "Car" << i << ", ";
                     }
                 }
                 cout << "}: ";
-                cin >> rentCarInput;
 
-                isInputInRange = (0 <= rentCarInput && rentCarInput <= 7);
-                if((!isInputInRange) || RentalStatus(fleet, CarsSelector(rentCarInput))){
-                    cout << "Sorry, this is not available. PLease enter another option.";
+                cin >> optionInput;
+                if(optionInput == -1){
+                    Menu(); //To exit if no more available cars to rent or changing your mind
                 }
+                isInputInRange = (0 <= optionInput && optionInput <= 7);
 
-            
+                rentCarInputInvalid = (!isInputInRange) || RentalStatus(fleet, CarsSelector(optionInput));
+
+                if(rentCarInputInvalid){
+                    cout << "Sorry, this is not available. PLease enter another option.\n" << endl;
+                }
             //Must check first if input is in range or else it will exit
             //If the input is not in range or the car is not available to rent, this will loop.
-            } while((!isInputInRange) || (RentalStatus(fleet, CarsSelector(rentCarInput))));
-            RentCar(fleet, CarsSelector(rentCarInput));
+
+            } while(rentCarInputInvalid);
+            RentCar(fleet, CarsSelector(optionInput));
             break;
         case 3:
+            do{
+                cout << "[Enter -1 to Exit] Please choose from the following rented cars to return: {";
+                for(int i = 0; i <= 7; i++){        
+                    if(RentalStatus(fleet, CarsSelector(i))){
+                        cout << "Car" << i << ", ";
+                    }
+                }
+                cout << "}:  ";
+                cin >> optionInput;
+                if(optionInput == -1){
+                    Menu(); //To exit if no more rented cars to return or changing your mind
+                }
+                isInputInRange = (0 <= optionInput && optionInput <= 7);
 
-
+                returnCarInputInvalid = !((isInputInRange) && RentalStatus(fleet, CarsSelector(optionInput)));
+                if(returnCarInputInvalid){
+                    cout << "Sorry, this is not available. PLease enter another option.\n" << endl;
+                }
+            } while(returnCarInputInvalid);
+            ReturnCar(fleet, CarsSelector(optionInput));
             break;
         default:
             cout << "\nInvalid input" << endl;
@@ -123,7 +146,7 @@ void Menu(){
  *  Turns int into CARS enum
  * 
  *  @param input: input in int format
- *  @return CARS: Returns CARS enum
+ *  @retturn CARS: Returns CARS enum
  */
 CARS CarsSelector(int input){
     switch(input){
@@ -147,6 +170,3 @@ CARS CarsSelector(int input){
     exit(0);
 }
 
-//To go to enums
-//for(int i = Car0; i <= Car7; i = i << 1 ){
-//}
