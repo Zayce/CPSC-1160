@@ -68,6 +68,6 @@
 				"isDefault": true
 			},
 			"detail": "compiler: /usr/bin/clang++"
-		}
+		},
 	]
 }
