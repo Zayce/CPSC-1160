@@ -18,11 +18,11 @@ private:
 
 public:
     Set(){
-        values = vector<int>();
+        this.values = vector<int>();
     }
     
     Set(vector<int> val){
-        values = val;
+        this.values = val;
 
         if(val == nullptr || val.empty() ){
             cout << "Array is null or size of array is zero" << endl;
@@ -31,11 +31,12 @@ public:
         else{
             for(int i = 0; i < val.size() - 1; i++){
                 for(int j = i + 1; j < val.size(); j++){
-                    if(values.at(i) == values.at(j){
-                        values.erase(j);
+                    if(this.values.at(i) == this.values.at(j){
+                        this.values.erase(j);
                     }
                 }
-                values.push_back(values.at(i));
+                //TODO test this out
+                // values.push_back(values.at(i));
             }
         }
     }
@@ -46,8 +47,8 @@ public:
         }
     }
 
-    ostream& operator<<(ostream& out, const Set& set){
-        vector<int>* temp = set.values;
+    friend ostream& operator<<(ostream& out , const Set& set){
+        Set temp = Set(set);
         int randomIndex;
         out << "{";
         while(temp.values.size() > 1){
@@ -55,7 +56,7 @@ public:
             out << temp.values.at(randomIndex) << ", ";
             temp.values.erase(temp.values.begin() + randomIndex);
         }
-        out << temp.values.at(temp.values.begin()) << ", ";
+        out << temp.values.at(temp.values.begin());
         temp.values.pop_back();
         out << "}" << endl;
 
@@ -101,16 +102,11 @@ public:
 };
 
 Set GenerateRandom(const int n, int min, int max){
-    int* arr = new int[n];
+    vector<int> temp = vecotr<int>(n);
     for(int i = 0; i < n; i++){
-        arr[i] =  (min + (rand() % (max - min + 1)));
+        temp.push_back((min + (rand() % (max - min + 1))));
     }
-
-    if(arr != nullptr){
-        delete[] arr;
-        arr = nullptr;
-    }
-    return Set(arr,n);
+    return Set(temp);
 }
 
 
