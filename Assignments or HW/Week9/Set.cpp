@@ -2,10 +2,9 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include "Set.h"
 
 using namespace std;
-
-class Set;
 
 int main(){
     srand(time(0));
@@ -18,21 +17,21 @@ private:
 
 public:
     Set(){
-        this.values = vector<int>();
+        this->values = vector<int>();
     }
     
     Set(vector<int> val){
-        this.values = val;
+        this->values = val;
 
-        if(val == nullptr || val.empty() ){
+        if(val.empty() ){
             cout << "Array is null or size of array is zero" << endl;
             exit(-1);
         }
         else{
             for(int i = 0; i < val.size() - 1; i++){
                 for(int j = i + 1; j < val.size(); j++){
-                    if(this.values.at(i) == this.values.at(j){
-                        this.values.erase(j);
+                    if(this->values.at(i) == this->values.at(j)){
+                        this->values.erase(values.begin() + j) ;
                     }
                 }
                 //TODO test this out
@@ -47,7 +46,7 @@ public:
         }
     }
 
-    friend ostream& operator<<(ostream& out , const Set& set){
+    Set::ostream& operator<<(ostream& out , const Set& set){
         Set temp = Set(set);
         int randomIndex;
         out << "{";
@@ -56,14 +55,9 @@ public:
             out << temp.values.at(randomIndex) << ", ";
             temp.values.erase(temp.values.begin() + randomIndex);
         }
-        out << temp.values.at(temp.values.begin());
+        out << temp.values.at(0);
         temp.values.pop_back();
         out << "}" << endl;
-
-        if(temp != nullptr){
-            delete[] temp;
-            temp = nullptr;
-        }
 
         return out;
     }
@@ -102,12 +96,11 @@ public:
 };
 
 Set GenerateRandom(const int n, int min, int max){
-    vector<int> temp = vecotr<int>(n);
+    vector<int> temp = vector<int>(n);
     for(int i = 0; i < n; i++){
         temp.push_back((min + (rand() % (max - min + 1))));
     }
     return Set(temp);
 }
-
 
 
