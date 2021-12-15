@@ -65,6 +65,18 @@ class Set{
             return this->values;
         }
 
+        int size(){
+            return this->values->size();
+        }
+
+        bool AddElement(int elem){
+            if(!(this->ItemInSet(elem))){
+                this->values->push_back(elem);
+                return true;
+            }
+            return false;
+        }
+
         void GenerateRandom(const int n, const int min, const int max){
             int tempElement;
             for(int i = 0; i < n; i++){
@@ -77,18 +89,28 @@ class Set{
         }
 
         Set& operator=(const Set& set){
-            Set* temp = new Set(set);
-            return *temp;
+            while(values->size() > 0){
+                values->pop_back();
+            }
+
+            this->values = new vector<int>();
+
+            for(int i = 0; i < set.values->size(); i++){
+                values->push_back(set.values->at(i));
+            }
+            
+            return *this;
         }
 
         const Set& operator+(const Set& set){
 
-            Set* temp = new Set();
+            Set* temp = new Set(*this);
+            int element;
 
             if( this != &set){
 
                 for(int i = 0; i < set.values->size(); i++ ){
-                    int element = set.values->at(i);
+                    element = set.values->at(i);
                     if(!ItemInSet(element)){
                         temp->values->push_back(element);
                     }
@@ -97,9 +119,19 @@ class Set{
             return *temp;
         }
 
-        // const Set& operator-(const Set& set){
-            
-        // }
+        const Set& operator-(const Set& set){
+            Set* newSet = new Set();
+
+            int i, j;
+            for(i = 0; i < this->size(); i++){
+                for(j = 0; j < set->size(); j++){
+                    if(this->values->at(i) == set.values->at(j)){
+                        break;
+                    }
+                }
+                newSet->values->push_back(this)
+            }
+        }
 
         // const Set& operator*(const Set& set){
             
@@ -123,7 +155,7 @@ class Set{
         }
 
         friend ostream& operator<<(ostream& out , const Set& set);
-        // friend istream& operator>>(istream& in);
+        friend istream& operator>>(istream& in, Set& set);
 };
 
 ostream& operator<<(ostream& out , const Set& set){
@@ -142,6 +174,23 @@ ostream& operator<<(ostream& out , const Set& set){
             return out;
 }
 
-// friend istream& operator>>(istream& in){}
+istream& operator>>(istream& in, Set& set){
+    cout << "Enter values, please enter without values to exit:  ";
+    int elem;
+    bool isContinue = true;
+
+    do{
+        in >> elem;
+        if(!set.ItemInSet(elem)){
+            cout << ",";
+            set.values->push_back(elem);
+        }
+        else{
+            isContinue = false;
+            cout << "}" << endl << "Reapeated element found, ending entry." << endl;
+        }
+    } while(isContinue);
+    return in;
+}
 
 #endif
