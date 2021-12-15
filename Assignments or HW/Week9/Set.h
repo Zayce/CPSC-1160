@@ -93,6 +93,10 @@ class Set{
                 values->pop_back();
             }
 
+            if(this->values != nullptr){
+                delete this->values;
+            }
+            
             this->values = new vector<int>();
 
             for(int i = 0; i < set.values->size(); i++){
