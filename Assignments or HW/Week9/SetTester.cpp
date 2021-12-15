@@ -9,5 +9,8 @@ int main(){
     temp.GenerateRandom(12, 0, 100);
 
     cout << temp << endl;
+    cout << temp << endl;
+    cout << temp << endl;
+
     return 0;
 }

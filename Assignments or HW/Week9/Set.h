@@ -44,18 +44,11 @@ class Set{
         }
 
         Set(const Set &set){
-            if(*this != set){
+            this->values = new vector<int>();
 
-                while(values->size > 0){
-                    values->pop_back();
-                }
-                
-                for(int i = 0; i < set.values->size(); i++){
-                    values->push_back(set.values->at(i));
-                }
-             
+            for(int i = 0; i < set.values->size(); i++){
+                values->push_back(set.values->at(i));
             }
-            return *this;
         }
 
         ~Set(){
@@ -72,9 +65,9 @@ class Set{
             return this->values;
         }
 
-        void GenerateRandom(const int n, int min, int max){
+        void GenerateRandom(const int n, const int min, const int max){
             int tempElement;
-            for(int i = 0; i < n-1; i++){
+            for(int i = 0; i < n; i++){
                 do{
                     tempElement = (min + (rand() % (max - min + 1)));
                 } while(ItemInSet(tempElement));
@@ -84,8 +77,8 @@ class Set{
         }
 
         Set& operator=(const Set& set){
-
-            return *this;
+            Set* temp = new Set(set);
+            return *temp;
         }
 
         const Set& operator+(const Set& set){
@@ -134,19 +127,13 @@ class Set{
 };
 
 ostream& operator<<(ostream& out , const Set& set){
-                            cout << " HI" << endl;
             Set temp = Set(set);
-                                    cout << " no" << endl;
-
             int randomIndex;
-            int cntr = 0;
-
             out << "{";
             while(temp.values->size() > 1){
                 randomIndex = rand() % (temp.values->size() - 1);
                 out << temp.values->at(randomIndex) << ", ";
                 temp.values->erase(temp.values->begin() + randomIndex);
-                cout << cntr++ << endl;
             }
             out << temp.values->at(0);
             temp.values->pop_back();
