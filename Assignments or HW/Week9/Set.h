@@ -146,9 +146,9 @@ class Set{
             return *newSet;
         }
 
-        // const Set& operator*(const Set& set){
+        Set& operator*(const Set& set){
             
-        // }
+        }
 
         Set& operator/(const Set& set) const {
             // Set* newSet = new Set();
