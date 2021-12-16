@@ -17,7 +17,7 @@ int main(){
     cin >> temp;
     cin >> temp2;
 
-    cout << temp - temp2 << endl;
+    cout << temp / temp2 << endl;
     // cout << "Size " << temp.size() << endl;
     // cout << temp << endl;
     // cout << temp << endl;
