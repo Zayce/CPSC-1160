@@ -65,8 +65,9 @@ class Set{
             return this->values;
         }
 
-        int size(){
-            return this->values->size();
+        const int size(){
+            const int size = this->values->size();
+            return size;
         }
 
         bool AddElement(int elem){
@@ -123,18 +124,26 @@ class Set{
             return *temp;
         }
 
-        const Set& operator-(const Set& set){
+        Set& operator-(Set& set){
             Set* newSet = new Set();
 
-            int i, j;
-            for(i = 0; i < this->size(); i++){
-                for(j = 0; j < set->size(); j++){
-                    if(this->values->at(i) == set.values->at(j)){
-                        break;
+            if(this->size() > set.size()){
+                for(int i = 0; i < this->size(); i++){
+                    if(!set.ItemInSet(this->values->at(i))){
+                        newSet->values->push_back(this->values->at(i));
+                        // newSet->AddElement(this->values->at(i));
                     }
                 }
-                newSet->values->push_back(this)
             }
+            else{
+                for(int i = 0; i < set.size(); i++){
+                    if(!this->ItemInSet(set.values->at(i))){
+                        newSet->values->push_back(set.values->at(i));
+                        // newSet->AddElement(this->values->at(i));
+                    }
+                }
+            }
+            return *newSet;
         }
 
         // const Set& operator*(const Set& set){
