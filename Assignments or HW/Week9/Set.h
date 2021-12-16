@@ -12,7 +12,7 @@ class Set{
     private:
         vector<int>* values;
 
-        bool ItemInSet(int item){
+        bool ItemInSet(int item) const{
             for(int i = 0; i < values->size(); i++){
                 if(item == values->at(i)){
                     return true;
@@ -65,7 +65,7 @@ class Set{
             return this->values;
         }
 
-        const int size(){
+        int size() const{
             const int size = this->values->size();
             return size;
         }
@@ -107,7 +107,7 @@ class Set{
             return *this;
         }
 
-        const Set& operator+(const Set& set){
+        Set& operator+(const Set& set) const{
 
             Set* temp = new Set(*this);
             int element;
@@ -124,11 +124,11 @@ class Set{
             return *temp;
         }
 
-        Set& operator-(Set& set){
+        Set& operator-(const Set& set) const{
             Set* newSet = new Set();
 
-            if(this->size() > set.size()){
-                for(int i = 0; i < this->size(); i++){
+            if(this->values->size() > set.values->size()){
+                for(int i = 0; i < this->values->size(); i++){
                     if(!set.ItemInSet(this->values->at(i))){
                         newSet->values->push_back(this->values->at(i));
                         // newSet->AddElement(this->values->at(i));
@@ -136,7 +136,7 @@ class Set{
                 }
             }
             else{
-                for(int i = 0; i < set.size(); i++){
+                for(int i = 0; i < set.values->size(); i++){
                     if(!this->ItemInSet(set.values->at(i))){
                         newSet->values->push_back(set.values->at(i));
                         // newSet->AddElement(this->values->at(i));
