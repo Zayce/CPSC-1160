@@ -150,9 +150,31 @@ class Set{
             
         // }
 
-        // const Set& operator/(const Set& set){
+        Set& operator/(const Set& set) const {
+            // Set* newSet = new Set();
+
+            // if(this->size() > set.size()){
+            //     for(int i = 0; i < this->size(); i++){
+            //         if(set.ItemInSet(this->values->at(i))){
+            //             newSet->values->push_back(this->values->at(i));
+            //             // newSet->AddElement(this->values->at(i));
+            //         }
+            //     }
+            // }
+            // else{
+            //     for(int i = 0; i < set.size(); i++){
+            //         if(this->ItemInSet(set.values->at(i))){
+            //             newSet->values->push_back(set.values->at(i));
+            //             // newSet->AddElement(this->values->at(i));
+            //         }
+            //     }
+            // }
+
             
-        // }
+            // return *newSet;
+
+            return ((*this + set) - (*this - set));
+        }
 
         const bool operator==(const Set& set){
             for(int i = 0; i < set.values->size(); i++){
