@@ -127,8 +127,8 @@ class Set{
         Set& operator-(const Set& set) const{
             Set* newSet = new Set();
 
-            if(this->values->size() > set.values->size()){
-                for(int i = 0; i < this->values->size(); i++){
+            if(this->size() > set.size()){
+                for(int i = 0; i < this->size(); i++){
                     if(!set.ItemInSet(this->values->at(i))){
                         newSet->values->push_back(this->values->at(i));
                         // newSet->AddElement(this->values->at(i));
@@ -136,7 +136,7 @@ class Set{
                 }
             }
             else{
-                for(int i = 0; i < set.values->size(); i++){
+                for(int i = 0; i < set.size(); i++){
                     if(!this->ItemInSet(set.values->at(i))){
                         newSet->values->push_back(set.values->at(i));
                         // newSet->AddElement(this->values->at(i));
