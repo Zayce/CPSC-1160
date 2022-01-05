@@ -22,7 +22,11 @@ class Final {
       Node* head;
 
       Node* copyList(Node* p){
-         
+         Node* newNode = new Node();
+
+         newNode->data
+
+         return newNode;
       }
 
       Node* deleteList(Node *p){
@@ -121,14 +125,19 @@ ostream& operator<<(std::ostream& out, const Final& f) {
    
    out << '[' << ' ';
 
+   Node temp = f.head;
+
    // loop through the linked list f - add missing lines of code below for the loop
-   
-      chr = f.head->data->ch; // replace the ??? with appropriate member from object f
+   while(temp != nullptr){
+      chr = temp.data->ch; // replace the ??? with appropriate member from object f
       out << chr;
       out << ":";
-      cnt = f.head->data->count // replace the ??? with appropriate member from object f
+      cnt = temp.head->data->count // replace the ??? with appropriate member from object f
       out << cnt;
       out << ' ';
+      temp = temp.next;
+   }
+
       
    
    out << ']';

@@ -49,6 +49,7 @@ Class Code/Week 2/Week2PointerCode.dSYM/Contents/Info.plist
 .DS_Store
 .gitignore
 Lab/Lab 2/.DS_Store
+Final/
 
 # Ignore zip files
 .zip
@@ -60,3 +61,4 @@ Lab/Lab 2/.DS_Store
 *.docx
 *.zip
 Assignments or HW/Week9/Wk9HW.docx
+Final/Final.h
